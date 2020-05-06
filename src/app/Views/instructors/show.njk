@@ -1,0 +1,45 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<div class="card">
+    <!--Show picture of instructor-->
+    <section class="avatar" 
+        style="background: url({{instructor.avatar_url}}) 
+        no-repeat center center/ cover"> 
+    </section>
+    <section class="details">
+
+            <h3>Details</h3>
+        <!--Show name of instructor-->
+        <div class="item">
+            <div>Istructor</div>
+            <div>{{instructor.name}}</div>
+        </div>
+        <!--Show gender of instructor-->
+        <div class="item">
+            <div>Gender</div>
+            <div>{{"Male" if instructor.gender=="M" else "Female"}}</div>
+        </div>
+        <!--Should show the gender of instructor-->
+            <div class="item">
+            <div>Age</div>
+            <div>{{instructor.age}}</div>
+        </div>
+
+            <div class="item">
+            <div>Accompaniment</div>
+                <div class="accompaniment">
+                    <span>{{instructor.services}}</span>
+                    <span>{{member.services}}</span>
+                </div>
+            </div>
+
+        <div class="item">
+            <div>Since</div>
+            <div>{{instructor.since}}</div>
+        </div>
+        <a href="/instructors/{{instructor.id}}/edit"class="btn_show">Edit</a>
+
+    </section>
+</div>
+{% endblock content %}

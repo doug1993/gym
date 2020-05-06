@@ -1,0 +1,44 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<div class="card">
+    <!--Show picture of member-->
+    <section class="avatar" 
+        style="background: url({{member.avatar_url}}) 
+        no-repeat center center/ cover"> 
+    </section>
+    <section class="details">
+
+            <h3>Details</h3>
+        <!--Show name of member-->
+        <div class="item">
+            <div>Istructor</div>
+            <div>{{member.name}}</div>
+        </div>
+        <!--Show gender of member-->
+        <div class="item">
+            <div>Gender</div>
+            <div>{{"Male" if member.gender=="M" else "Female"}}</div>
+        </div>
+        <!--Should show the gender of member-->
+            <div class="item">
+            <div>Age</div>
+            <div>{{member.age}}</div>
+        </div>
+
+            <div class="item">
+            <div>Accompaniment</div>
+                <div class="accompaniment">
+                    <span>{{member.services}}</span>
+                </div>
+            </div>
+
+        <div class="item">
+            <div>Since</div>
+            <div>{{member.since}}</div>
+        </div>
+        <a href="/members/{{member.id}}/edit"class="btn_show">Edit</a>
+
+    </section>
+</div>
+{% endblock content %}

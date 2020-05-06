@@ -1,0 +1,32 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<div class="card table_card">
+<a href="/members/create" class="new_ins">NEW</a>
+   <table class="index_table">
+        <thead class="index_header">
+            <tr>
+                <th>Instructor </th>
+                <th>Services </th>
+                <th>Profile </th>
+            </tr>
+        </thead>
+        
+        <tbody class="index_body">
+        {% for member in members %}
+            <tr>
+                <td>
+                <span style="background-image:  url({{member.avatar_url}}url{{instructor.avatar_url}})"></span>
+                {{member.name}}
+                </td>
+                <td  class="trampo">{{member.services}}</td>
+                <td>
+                <a href="/members/{{member.id}}" 
+                class="index_show">Show</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+   </table>
+</div>
+{% endblock content %}

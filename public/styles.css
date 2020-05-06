@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Reenie+Beanie');
+:root{
+    --roxin:#7159c1;
+    --cinzin:#f3eff5;
+    --verdin:rgb(132, 236, 12);
+    --yellin: #f6d155;
+}
+*{ margin:0;padding:0;border:none}
+body{    
+    font-family:'Segoe UI';
+    font-weight: 300;
+    background-color: #1d1633;
+    
+}
+header{
+   background-color: var(--cinzin);
+   height: 25px;
+   text-align: center;
+   padding: 12px;
+}
+.links a + a{margin-left: 64px;}
+.links a{
+    color: #09090c;
+    font-size: 20px;
+    font-weight: 300;
+    position: relative;
+}
+a.active{
+    font-weight: 500;
+    color: purple;
+}
+.links a:hover{
+    color: var(--roxin);
+}
+.links a::after{
+    content: "";
+    width: 0;
+    height: 3px;
+    background-color: var(--roxin);
+    left: 0;
+    bottom: -1.5px;
+    position: absolute;
+}
+.avatar{
+    border-right: 1px solid var(--roxin);
+}
+
+.links a:hover::after{
+    width: 100%;
+    transition: width 400ms ease-in-out 0.1s;
+}
+/*===card===*/
+.card{
+    
+    background-color: white;
+    width: 700px;
+    height: 420px;
+    margin:45px auto;
+    /*Broken Down*/
+    display: grid;
+    grid-template-columns: 4fr 3fr;
+
+    /*Shadow*/
+    box-shadow: -2px 12px 35px 5px rgb(58, 27, 58,0.8);
+
+    /*Animation*/
+    animation: up 700ms ease-out;
+}
+@keyframes up{
+    from{
+           opacity: 0.3;
+            transform:  translateX(700px);
+    }
+    to{
+        opacity: 1;
+    }
+}
+/*===Details===*/
+.details{ padding: 8px 24px;}
+
+.details .item{
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.details .item div:nth-child(1){
+    color: var(--cinzin);
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-top: 12px;
+}
+.details .item div:nth-child(2){
+    font-weight: 500;font-size: 16px;
+}
+.details h3{
+    color: var(--roxin);
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+span + span{ margin-left: 16px; }
+
+/*===FORM===*/
+input{
+ width: 100%; outline: none ;
+ font-weight: 500;
+ font-size: 16px;
+}
+input[type="radio"]{
+    width: initial; 
+    margin-right: 4px;
+}
+input::placeholder{
+    font-size: 16px;
+}
+button[type="submit"]
+{
+    margin-top: 24px; margin-left: 24px;
+    width: 100px; height:32px;
+    background-color: var(--roxin);
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+    text-align: center;
+    font-family: Bangers;
+    letter-spacing: 2px;
+}
+.btn_show{
+    display: block;
+    box-sizing: border-box;
+    background-color: var(--roxin);
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 24px;
+    padding: 8px;
+    color: white;
+    text-decoration: none;
+    font-family: Bangers;
+    letter-spacing: 2px;
+}
+button[type="submit"].btn_delete
+{   margin-top: 0px;
+     margin-left:160px;
+    width: 100px; height:32px;
+    background-color:rgb(223, 54, 39);
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+    text-align: center;
+    font-family: Bangers;
+    letter-spacing: 2px;
+}
+div.btn_CD{display: grid;grid-template-columns: 1fr 1fr; 
+            height:24px;width:300px}
+
+
+/*Index of INstructors*/
+.index_table{
+    padding: 40px;
+    box-sizing: border-box;
+}
+  
+.index_header{
+    font-size: 24px;
+    color: purple;
+    font-family: 'Segoe UI'; letter-spacing: 2px;
+    
+   
+}
+.index_body{
+    font-size: 16px;
+    
+}
+.table_card{
+    display: block;
+    height: auto;width: 920px;
+    background-color: var(--cinzin);
+    border-radius: 24px;
+    
+}
+
+
+td{
+    border-bottom: 1px solid rgb(182, 181, 181,0.5);
+    padding: 8px 44px;
+    
+}
+thead tr th{
+    margin-bottom: 2cm;
+    border-bottom: 1px solid purple;
+}
+
+tbody tr:last-child td{ 
+    border-bottom: none;
+}
+.index_show{
+    display: block;
+    color: var(--roxin);
+    text-decoration: none;
+    font-weight: 600;
+ 
+}
+tbody tr td:first-child{
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    align-items: center;
+    font-family: 'Segoe UI';
+    font-size: 20px;
+    font-weight: 400;
+    font-style: oblique;
+    
+}
+tbody tr td:nth-child(2){
+    align-items: center;
+    font-family: 'Segoe UI';
+    font-size: 16px;
+    font-weight: 300;
+    font-style: oblique;
+    
+}
+
+tbody tr td:first-child span{
+    width: 64px; height: 64px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50% 50%;
+    border: 0.6px solid purple;
+    box-shadow:0px 0px 24px  rgb(151, 246, 164);
+    margin-top: 24px;
+    margin-bottom: 24px;
+  
+}
+.new_ins{
+    background-color: var(--cinzin);
+    
+    color: purple;
+    padding: 8px 16px;
+    border-radius: 15px;
+    box-shadow:
+                2px 3px 5px  rgb(150, 150, 150,1),2px 2px 2px  rgb(123, 123, 123),
+                inset 2px 2px 4px 4px rgb(255, 255, 255) ;   
+    font-size: 24px; 
+    
+    font-family: Bangers;
+    letter-spacing: 2px;
+    text-decoration: none;
+    padding: 16px;
+    position: absolute;
+    margin-left: 12px;
+    margin-top: -16px;
+    
+
+}
+tbody tr td:last-child  a{
+    background-color: var(--cinzin);
+    
+    color: black;
+    padding: 8px 16px;
+    border-radius: 15px;
+    box-shadow:
+                2px 3px 5px  rgb(150, 150, 150,1),2px 2px 2px  rgb(123, 123, 123),
+                inset 2px 2px 4px 4px rgb(255, 255, 255) ;   
+    font-size: 12px; 
+}
+tbody tr td:last-child  a:hover{
+    background-color: var(--cinzin);
+    padding: 8px 16px;
+    border-radius: 15px;
+    box-shadow: inset 3px 3px 3px rgb(200, 200, 200,0.2),
+                inset -3px -3px 3px rgb(200, 200, 200,0.2),
+                inset 1.5px 1.5px 2px rgb(0, 0, 0,0.2),
+                inset -1.5px -1.5px 6px rgb(0, 0, 0,0.2),
+                0px 0px 22px 4px rgb(151, 246, 164, 0.6);
+    font-size: 12px; 
+    color:var(--verdin);
+}
+.trampo{
+    text-align: center;
+}
+
+
+
+

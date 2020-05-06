@@ -1,0 +1,48 @@
+ <section class="avatar" 
+        style="background: url(https://source.unsplash.com/collection/9039832/800x800) 
+        no-repeat center center/ cover"> </section>
+ <div class="item">
+            <div>Avatar URL</div>
+                <div>
+                    <input type="url" name="avatar_url" placeholder="http:/" 
+                    value="{{instructor.avatar_url}}">
+
+                </div>
+        </div>
+
+        <div class="item">
+            <div>Instructor</div>
+                <div>
+                    <input type="text" name="name" placeholder="Type your name here:"
+                    value="{{instructor.name}}">
+                </div>
+        </div>
+        
+        <div class="item">
+            <div>Gender</div>
+                <div>
+                    <span><input type="radio" name="gender" value="M" 
+                    {% if instructor.gender == 'M' %} checked {% endif %}>Male</span>
+                    
+                    <span><input type="radio" name="gender" value="F"
+                    {% if instructor.gender == 'F' %} checked {% endif %}>Female</span>
+                </div>  
+        </div>
+        
+         <div class="item">
+            <div>Birth</div>
+                <div>
+                    <input type="date" name="birth" 
+                    value="{{instructor.birth}}">
+                </div>
+        </div>
+
+         <div class="item">
+            <div>Area of Expertise</div>
+                <div class="accompaniment">
+                    <span><input type="text"placeholder="Muscle" name= "services"
+                    value="{{instructor.services}}"></span>
+                </div>
+            </div>
+
+       

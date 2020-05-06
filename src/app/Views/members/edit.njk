@@ -1,0 +1,31 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+    <div class="card">
+        <section class="avatar" 
+            style="background: url({{member.avatar_url}}) 
+            no-repeat center center/ cover"> 
+        </section>
+
+        <section class="details">                         <!--Onde se implementa a troca de metodo ?_method -->
+            <form  method="POST" action="/members?_method=PUT">
+                <h3>Details</h3>
+
+                {% include 'members/fields.njk'%}
+
+
+                    <input type="hidden" name="id" value="{{member.id}}">
+                    <div class="btn_CD"> <button type="submit" class="btn_edit2">Confirm</button></div>
+                       
+            </form>
+
+
+            <form action="/members?_method=DELETE" method="POST" id="form_delete">
+                    <input type="hidden" name="id" value="{{member.id}}">
+                    <div class="btn_CD"><button type="submit" class="btn_delete">DELETE</button></div>
+                    
+            </form>
+        </section>
+
+    </div>
+{% endblock content %}  
