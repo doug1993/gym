@@ -15,7 +15,7 @@ module.exports = {
     show(req,res){
         Instructor.find(req.params.id, function(instructor){
             if(!instructor){res.send('Instructor not Found!!')}
-            instructor.age =age(instructor.birth)
+            instructor.age = age(instructor.birth)
             instructor.created_at = date(instructor.created_at).format
 
             return res.render('instructors/show', {instructor})
@@ -38,8 +38,9 @@ module.exports = {
     edit(req,res){
         Instructor.find(req.params.id, function(instructor){
             if(!instructor){res.send('Instructor not Found!!')}
-            instructor.age =age(instructor.birth)
-            instructor.created_at = date(instructor.created_at).format
+            
+            instructor.birth =date(instructor.birth).iso
+            
 
             return res.render('instructors/edit', {instructor})
         })
@@ -49,7 +50,7 @@ module.exports = {
 
         for(key of keys){
             if(req.body[key]==''){
-                return res.send('Plese fill all the fields')
+                return res.send('Plese, fill all the fields')
             }
         }
 
@@ -58,8 +59,12 @@ module.exports = {
         })
     },
     delete(req,res){
-        return
-    }
+        Instructor.delete(req.body.id, function(){
+            return res.redirect(`/instructors`)
+        })
+        
+    },
+    a = console.log('test ')
 }
 
 /*Here is the slower form to call function 
