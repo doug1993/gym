@@ -4,7 +4,12 @@ const {date} = require('../../utils')
 
 module.exports={
     all(callback){
-        db.query(`SELECT * FROM instructors`, function(err,results){
+        db.query(`SELECT instructors.*, count(members) AS total_students
+                  FROM instructors
+                  LEFT JOIN members ON (members.instructor_id = instructors.id)
+                  GROUP BY instructors.id
+                  ORDER BY total_students DESC`, 
+        function(err,results){
             if(err) throw 'instructors crashed or not connected!!'
             callback(results.rows)
         })
@@ -16,8 +21,9 @@ module.exports={
             avatar_url,
             gender,
             services,
-            birth
-        ) VALUES ($1,$2,$3,$4,$5)
+            birth,
+            created_at
+        ) VALUES ($1,$2,$3,$4,$5,$6)
         RETURNING id
     `
     const values=[
@@ -25,12 +31,13 @@ module.exports={
         data.avatar_url,
         data.gender,
         data.services,
-        data.birth
+        data.birth,
+        data.created_at = new Date()
     ]
     db.query(query,values, function(err,results){
         if (err) throw 'Database connection Failed in creation!!!'
 
-       callback (results.rows[0])
+
 
     })
     },
@@ -41,6 +48,50 @@ module.exports={
 
     })
 
+    },
+    findBy(filter, callback){
+        db.query(`
+            SELECT instructors.*
+            FROM instructors
+            WHERE instructors.name ILIKE '%${filter}%' OR instructors.services ILIKE '%${filter}%' 
+            `, function(err, results){
+                if(err) throw `Filter Error ! ${err}`
+
+                callback(results.rows)
+            })
+            
+    },
+    paginate(params){
+        const { filter, limit, offset, callback} = params
+
+            let query ="",
+                filterQuery="",
+                totalQuery=`(SELECT count(*) FROM instructors) AS total`
+
+        if (filter){
+            filterQuery = `
+            WHERE instructors.name ILIKE '%${filter}%'
+            OR instructors.services ILIKE '%${filter}%'
+            `   
+            totalQuery =`(
+                SELECT count(*) FROM instructors
+                ${filterQuery}
+            ) AS total` 
+        }
+
+         query = `SELECT instructors.*,
+        ${totalQuery},
+         count(members) AS total_students
+         FROM instructors
+         LEFT JOIN members ON (instructors.id = members.instructor_id)
+        ${filterQuery}
+        GROUP BY instructors.id LIMIT $1 OFFSET $2` 
+
+        db.query(query,[limit ,offset], function(err, results){
+            if(err) throw 'Paginate ERROR!!'
+ 
+            callback(results.rows)
+        })
     },
     update(data, callback){
         const query = `
@@ -76,28 +127,3 @@ module.exports={
     }
 
 }
-/*    update(data, callback){
-        const query=`
-        UPDATE instructors SET
-            name= $(1),
-            avatar_url= $(2),
-            gender= $(3),
-            services= $(4),
-            birth= $(5),
-        WHERE id=$6
-        `
-        const values=[
-            data.name,
-            data.avatar_url,
-            data.gender,
-            data.services,
-            data.birth
-         
-        ]
-    db.query(query, values, function(err,results){
-        if (err){}
-
-        callback(results.rows[0])
-    })
-
-    }*/

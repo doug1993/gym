@@ -3,3 +3,4 @@ packager-lock.json,
 test*,
 note*
 
+node_modules

@@ -229,24 +229,23 @@ tbody tr td:first-child span{
     margin-bottom: 24px;
   
 }
-.new_ins{
+.new_ins,button.new_ins{
     background-color: var(--cinzin);
-    
+    font-weight: 700;
     color: purple;
     padding: 8px 16px;
-    border-radius: 15px;
+    border-radius: 25px;
     box-shadow:
                 2px 3px 5px  rgb(150, 150, 150,1),2px 2px 2px  rgb(123, 123, 123),
                 inset 2px 2px 4px 4px rgb(255, 255, 255) ;   
-    font-size: 24px; 
+    font-size: 16px; 
     
-    font-family: Bangers;
+    font-family: 'Segoe UI';
     letter-spacing: 2px;
     text-decoration: none;
-    padding: 16px;
+    
     position: absolute;
-    margin-left: 12px;
-    margin-top: -16px;
+   
     
 
 }
@@ -268,15 +267,82 @@ tbody tr td:last-child  a:hover{
     box-shadow: inset 3px 3px 3px rgb(200, 200, 200,0.2),
                 inset -3px -3px 3px rgb(200, 200, 200,0.2),
                 inset 1.5px 1.5px 2px rgb(0, 0, 0,0.2),
-                inset -1.5px -1.5px 6px rgb(0, 0, 0,0.2),
-                0px 0px 22px 4px rgb(151, 246, 164, 0.6);
+                inset -1.5px -1.5px 6px rgb(0, 0, 0,0.2);
+                
     font-size: 12px; 
-    color:var(--verdin);
+    
 }
 .trampo{
     text-align: center;
 }
-
-
-
-
+.students{
+    font-size: 24px;font-family: 'Segoe UI';
+    font-weight: 900;color: rgb(67, 25, 92);
+}
+div .header{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    align-items: center;
+}
+div .form_header{
+    display: grid;
+    grid-template-columns:352px 176px;
+    align-items: center;
+    height: 72px;
+}
+.header .btn_header, .btn_header a{
+    background-color: var(--roxin);
+    font-family: 'Segoe UI'; font-weight: 600;font-size: 16px;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    width: 120px;
+    height: 32px;
+    text-align: center;
+    vertical-align: middle;
+    
+}
+.btn_header{
+    margin-left: 40px;
+    
+}.header form{
+    display: grid;
+    grid-template-columns: 352px 1fr;
+}
+.header form button{
+    margin: 0;
+    margin-left: 24px;
+    margin-right: 40px;
+}
+.header form input{
+    width: 360px;
+    border-radius: 25px;
+    background-color:rgba(255,255,255,0.5);
+    height: 32px;
+    
+}
+/*---pagination---*/
+.table_card{
+    display: grid ;
+    grid-template: 64px 1fr 16px / 1fr;
+}
+.table_card .header{
+    margin:0;
+    justify-self: center;
+    
+} 
+.pagination{
+    text-align: center;
+    margin-top:-16px;
+}  
+.pagination a, .pagination span{
+    color: purple;
+    text-decoration: none;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    
+}
+.pagination a:hover{
+    filter: brightness(0.5);
+    color: blue;
+}

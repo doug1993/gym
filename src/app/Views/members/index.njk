@@ -2,8 +2,33 @@
 
 {% block content %}
 <div class="card table_card">
-<a href="/members/create" class="new_ins">NEW</a>
-   <table class="index_table">
+
+   
+     <div class="header">
+
+        <div class="btn_header">
+         <a href="/members/create" >NEW</a>
+        </div>
+
+    
+    
+        <div >  
+            <form action="/members" method="GET">
+       
+                   <div > <input type="text" name="filter" 
+                   placeholder="     typing a name or service"  
+                   value="{{filter}}"> </div>
+
+
+    
+                <div ><button type="submit"  class="btn_header" >SEARCH</button> </div>
+            </form>
+        </div>
+            
+      
+    </div>
+
+    <table class="index_table">
         <thead class="index_header">
             <tr>
                 <th>Instructor </th>
@@ -28,5 +53,11 @@
         {% endfor %}
         </tbody>
    </table>
+     <div class="pagination"
+        data-page = {{pagination.page}}      
+        data-total = {{pagination.total}}
+        data-filter = {{filter}}>
+        
+    </div>
 </div>
 {% endblock content %}

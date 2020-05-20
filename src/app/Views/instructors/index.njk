@@ -2,31 +2,62 @@
 
 {% block content %}
 <div class="card table_card">
-<a href="/instructors/create" class="new_ins">NEW</a>
-   <table class="index_table">
-        <thead class="index_header">
-            <tr>
-                <th>Instructor </th>
-                <th>Services </th>
-                <th>Profile </th>
-            </tr>
-        </thead>
+
+    <div class="header">
+
+        <div class="btn_header">
+         <a href="/instructors/create" >NEW</a>
+        </div>
+
+    
+    
+        <div>  
+            <form action="/instructors" method="GET">
+                <div>
+                    <input type="text" name="filter" 
+                    placeholder="     typing a name or service"
+                    value="{{filter}}">
+
+                 </div>
+                <div><button type="submit"  class="btn_header" >SEARCH</button> </div>
+            </form>
+        </div>
+            
+      
+    </div>
+
+    <table class="index_table">
+            <thead class="index_header">
+                <tr>
+                    <th>Instructor </th>
+                    <th>Services </th>
+                    <th>students</th>
+                    <th>Profile </th>
+                </tr>
+            </thead>
+            
+            <tbody class="index_body">
+            {% for instructor in instructors %}
+                <tr>
+                    <td>
+                    <span style="background-image:  url({{instructor.avatar_url}})"></span>
+                    {{instructor.name}}
+                    </td>
+                    <td  class="trampo">{{instructor.services}}</td>
+                    <td  class="students">{{instructor.total_students}}</td>
+                    <td>
+                    <a href="/instructors/{{instructor.id}}" 
+                    class="index_show">Show</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+    </table>
+    <div class="pagination"
+        data-page = {{pagination.page}}      
+        data-total = {{pagination.total}}
+        data-filter = {{filter}}>
         
-        <tbody class="index_body">
-        {% for instructor in instructors %}
-            <tr>
-                <td>
-                <span style="background-image:  url({{instructor.avatar_url}})"></span>
-                {{instructor.name}}
-                </td>
-                <td  class="trampo">{{instructor.services}}</td>
-                <td>
-                <a href="/instructors/{{instructor.id}}" 
-                class="index_show">Show</a>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-   </table>
+    </div>
 </div>
 {% endblock content %}
